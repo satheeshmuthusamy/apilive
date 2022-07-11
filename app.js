@@ -73,16 +73,10 @@ app.get('/location', (req, res) => { //multiple routes
     })
 })
 app.get('/mealType', (req, res) => {
-        if (auth(req.header('basicauth'))) {
-            db.collection('mealType').find().toArray((err, result) => {
-                if (err) throw err;
-                res.send(result)
-            })
-        } else {
-            res.send('unauthorized calling')
-
-        }
-
+        db.collection('mealType').find().toArray((err, result) => {
+            if (err) throw err;
+            res.send(result)
+        })
     })
     //to get a required state we can use query params//
 app.get('/restaurants', (req, res) => {
